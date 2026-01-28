@@ -20,7 +20,7 @@
 
 */
 
-let chave = "8e6b8acf839224920f0f0bd17562f250"; //Chave da API do OpenWeatherMap para a pesquisa da previsão do tempo
+
 
 async function cliqueBotao(){ /*async e await andam juntos, tornando a ação de buscar os dados assíncrona, indicam promisses(promessa de que no fututro vai ter resultado)*/
     let cidade = document.querySelector(".inputCidade").value;
