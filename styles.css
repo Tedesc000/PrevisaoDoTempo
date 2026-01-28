@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
 
 body{
@@ -42,9 +43,65 @@ body{
     border-radius: 50%;
     margin-left: 10px;
     float: right; /*Faz o botão ir para a direita*/
+    transition: 0.5s; /*Adiciona uma transição suave para o efeito hover*/
 }
 
 .botao:hover{
     background-color: rgb(211, 191, 125);
     cursor: pointer; /*Muda o cursor para uma mãozinha quando passa por cima do botão*/
+    transform: scale(1.4);
+}
+
+.caixaMedia{
+    margin-top: 30px;
+}
+
+.cidade{
+    font-size: 30px;
+    color: black;
+}
+
+.temperatura{
+    font-size: 34px;
+    color: black;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.icone{
+
+}
+
+.umidade{
+    color: black;
+}
+
+.botaoIA{
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 18px;
+    color: black;
+    background-color: rgb(211, 191, 125);
+    border: none;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.botaoIA:hover{
+    background-color: rgb(180, 160, 100);
+    transform: scale(1.05);
+}
+
+.botaoIA:active{
+    transform: scale(0.98);/*Efeito de clique no botão*/
+    opacity: 0.8;
+}
+
+.respostaIA{
+    color: black;
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.4px;
 }
