@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /*Site para gerar imagens cada vez que recarrega a pagina https://loremflickr.com/1600/900/nature, landscape*/
+    background-image: url("https://loremflickr.com/1600/900/nature,landscape");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /*100% da altura da tela - View height*/
+    width: 100vw; /*100% da largura da tela - View width*/
+    display: flex; /*Flexbox para alinhar os itens filhos(caixas e botoes)*/
+    align-items: center;
+    justify-content: center;
+}
+
+.caixaMaior{
+    background-color: rgba(240, 248, 255, 0.753);
+    width: 450px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.inputCidade{
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(233, 233, 221);
+    color: black;
+    font-size: 20px;
+    width: calc(100%-30px);/*100% menos o padding de 15px de cada lado, o calc() serve justamente para não precisar adivinhar tamanhos*/
+}
+
+.botao{
+    padding: 10px;
+    border: none;
+    background-color: rgb(233, 233, 221);
+    border-radius: 50%;
+    margin-left: 10px;
+    float: right; /*Faz o botão ir para a direita*/
+}
+
+.botao:hover{
+    background-color: rgb(211, 191, 125);
+    cursor: pointer; /*Muda o cursor para uma mãozinha quando passa por cima do botão*/
+}
