@@ -18,16 +18,21 @@
 .enviar os dados para o servidor da IA
 .pegar a resposta da IA e mostrar na interface
 
+
+-IMPORTANTE PARA SEGURANÇA-
+.Nunca deixar a chave de API exposta no código front-end
+.Utilizar um servidor back-end para fazer as requisições para a API externa, como o PHP
 */
 
 
 
 async function cliqueBotao(){ /*async e await andam juntos, tornando a ação de buscar os dados assíncrona, indicam promisses(promessa de que no fututro vai ter resultado)*/
     let cidade = document.querySelector(".inputCidade").value;
-    let endereco = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${chave}&lang=pt_br&units=metric`;
-    /*template string em que pode botar outras variáveis dentro, como cidade e chave*/
+    let endereco = `weather.php?cidade=${cidade}`;//chama o backend PHP que faz a requisição para a API
+    /*template string em que pode botar outras variáveis dentro, como cidade*/
 
     let caixa = document.querySelector(".caixaMedia");
+
 
     //Precisa avisar o Javascript que vai fazer uma requisição para um servidor externo
     //traduzir a resposta do servidor para um formato que o Javascript entenda (JSON)
