@@ -5,13 +5,13 @@
 .pegar nome da cidade e guardar em variavel x
 .enviar o nome da cidade para a API x
 .pegar os dados da API e guardar em variaveis x
-.atualizar a interface com os novos dados
+.atualizar a interface com os novos dados x
 
 -fluxo de voz-
-.descobrir quando o botão mic foi clicado
-.ouvir e pegar a trasncricao do que foi dito
-.enviar a transcricao para o servidor de API
-.pegar a resposta e mostrar
+.descobrir quando o botão mic foi clicado x
+.ouvir e pegar a trasncricao do que foi dito x
+.enviar a transcricao para o servidor de API x
+.pegar a resposta e mostrar x
 
 -fluxo da IA-
 .pegar os dados da cidade selecionada
@@ -50,4 +50,15 @@ async function cliqueBotao(){ /*async e await andam juntos, tornando a ação de
         <p class="respostaIA">Resposta da IA</p>
     `
     /*O icone é montado através da url disponibilizada no site juntamente com o código do ícone */
+}
+
+function detectaVoz(){
+    let reconhecimento = new window.webkitSpeechRecognition();//função nativa do navegador para reconhecimento de voz
+    reconhecimento.lang = "pt-BR";//definir o idioma
+    reconhecimento.start();//iniciar o reconhecimento de voz
+
+    reconhecimento.onresult = function(evento){//função que captura o resultado do reconhecimento de voz
+        let textoTranscrito = evento.results[0][0].transcript;//pegar o texto transcrito, parecido com o JSON da API, é um array dentro de outro array
+        document.querySelector(".inputCidade").value = textoTranscrito;//colocar o texto transcrito no input de cidade
+    }
 }
