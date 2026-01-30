@@ -25,6 +25,14 @@ body{
     border-radius: 15px;
 }
 
+/*Problema da resposta da IA estar amontoada, input e button estavam sem div agrupando o topo, fazendo o navegador tratar cada um separado,
+float no botao removia ele do fluxo normal e fazia o conteúdo seguinte ignorar altura*/
+
+.topo{
+    display: flex;
+    align-items: center;
+}
+
 .inputCidade{
     border: none;
     outline: none;
@@ -33,7 +41,7 @@ body{
     background-color: rgb(233, 233, 221);
     color: black;
     font-size: 20px;
-    width: calc(100%-30px);/*100% menos o padding de 15px de cada lado, o calc() serve justamente para não precisar adivinhar tamanhos*/
+    flex: 1; /*Faz o input ocupar todo o espaço disponível*/
 }
 
 .botao{
@@ -42,7 +50,7 @@ body{
     background-color: rgb(233, 233, 221);
     border-radius: 50%;
     margin-left: 10px;
-    float: right; /*Faz o botão ir para a direita*/
+    /*Não usar float, é css antigo e tira o elemento do fluxo vertical*/
     transition: 0.5s; /*Adiciona uma transição suave para o efeito hover*/
 }
 
@@ -53,7 +61,8 @@ body{
 }
 
 .caixaMedia{
-    margin-top: 30px;
+    margin-top: 20px;
+    height: auto;
 }
 
 .cidade{
@@ -68,9 +77,6 @@ body{
     font-weight: bold;
 }
 
-.icone{
-
-}
 
 .umidade{
     color: black;
@@ -102,6 +108,17 @@ body{
 .respostaIA{
     color: black;
     margin-top: 15px;
-    font-size: 14px;
-    line-height: 1.4px;
+    line-height: 1.4;
+    height: auto;
+    background-color: rgb(233, 233, 221);
+    text-align: justify;
+    text-justify: justify;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.alinharCentro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

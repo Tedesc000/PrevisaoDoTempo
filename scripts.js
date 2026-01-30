@@ -42,11 +42,13 @@ async function cliqueBotao(){ /*async e await andam juntos, tornando a ação de
 
     //Math.floor(dadosJson.main.temp) arredonda para baixo a temperatura
     caixa.innerHTML = `
+        <div class="alinharCentro">
         <h2 class="cidade">${dadosJson.name}</h2>
         <p class="temperatura">${Math.floor(dadosJson.main.temp)} °C</p>
         <img class="icone" src="https://openweathermap.org/img/wn/${dadosJson.weather[0].icon}.png" alt="Ícone do clima">
         <p class="umidade">Umidade: ${dadosJson.main.humidity} %</p>
-        <button class="botaoIA">Sugestão de roupa</button>
+        </div>
+        <button class="botaoIA" onclick="sugestaoRoupa()">Sugestão de roupa</button>
         <p class="respostaIA">Resposta da IA</p>
     `
     /*O icone é montado através da url disponibilizada no site juntamente com o código do ícone */
@@ -61,4 +63,33 @@ function detectaVoz(){
         let textoTranscrito = evento.results[0][0].transcript;//pegar o texto transcrito, parecido com o JSON da API, é um array dentro de outro array
         document.querySelector(".inputCidade").value = textoTranscrito;//colocar o texto transcrito no input de cidade
     }
+}
+
+async function sugestaoRoupa(){
+    //pegar o texto contido na classe temperatura, usar textContent pois ele puxa o texto bruto, até elementos escondidos por CSS
+    let temperatura = document.querySelector(".temperatura").textContent;
+    let umidade = document.querySelector(".umidade").textContent;
+    let cidade = document.querySelector(".cidade").textContent;
+
+    let resposta = await fetch("groq.php", {
+        method: "POST",
+        headers: { //cabeçalhos da requisição
+            "Content-Type": "application/json",//tipo de conteúdo que está sendo enviado
+        },
+        body: JSON.stringify({ //corpo da requisição, converter para string JSON
+            mensagem: `Com base na temperatura de ${temperatura} e umidade de ${umidade} em ${cidade}, que roupa você recomendaria para vestir hoje? 
+            Por favor, responda de forma breve e objetiva, não use traços ou pontos de lista, faça em parágrafo.` //mensagem enviada para a IA
+        })
+    });
+
+    /*METODOS HTTP
+    GET - pegar dados
+    POST - enviar dados
+    PUT - atualizar dados
+    DELETE - deletar dados
+   */
+
+    let dados = await resposta.json(); //pegar a resposta da API e converter para JSON
+    console.log(dados);
+    document.querySelector(".respostaIA").textContent = dados.choices[0].message.content;//mostrar a resposta da IA na interface,a partir do JSON retornado
 }
