@@ -122,3 +122,10 @@ float no botao removia ele do fluxo normal e fazia o conteúdo seguinte ignorar 
     flex-direction: column;
     align-items: center;
 }
+
+.erro{
+    font-weight: bolder;
+    color: rgb(110, 14, 14);
+    font-size: 20px;
+    text-align: center;
+}

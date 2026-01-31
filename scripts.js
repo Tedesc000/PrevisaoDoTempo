@@ -14,9 +14,9 @@
 .pegar a resposta e mostrar x
 
 -fluxo da IA-
-.pegar os dados da cidade selecionada
-.enviar os dados para o servidor da IA
-.pegar a resposta da IA e mostrar na interface
+.pegar os dados da cidade selecionada x
+.enviar os dados para o servidor da IA x
+.pegar a resposta da IA e mostrar na interface x
 
 
 -IMPORTANTE PARA SEGURANÇA-
@@ -38,8 +38,14 @@ async function cliqueBotao(){ /*async e await andam juntos, tornando a ação de
     //traduzir a resposta do servidor para um formato que o Javascript entenda (JSON)
 
     let respostaServidor = await fetch(endereco);/*await faz a função esperar até que a promessa seja resolvida*/
-    let dadosJson = await respostaServidor.json();/*.json() é uma função que pega a resposta do servidor e traduz para JSON*/
+    
 
+    let dadosJson = await respostaServidor.json();/*.json() é uma função que pega a resposta do servidor e traduz para JSON*/
+    
+    if(dadosJson.cod == "404"){//se o código retornado for 404, cidade não encontrada
+        caixa.innerHTML = `<p class="erro">Cidade não encontrada, Tente novamente.</p>`;
+        return;//interrompe a execução da função
+    }
     //Math.floor(dadosJson.main.temp) arredonda para baixo a temperatura
     caixa.innerHTML = `
         <div class="alinharCentro">
@@ -78,7 +84,7 @@ async function sugestaoRoupa(){
         },
         body: JSON.stringify({ //corpo da requisição, converter para string JSON
             mensagem: `Com base na temperatura de ${temperatura} e umidade de ${umidade} em ${cidade}, que roupa você recomendaria para vestir hoje? 
-            Por favor, responda de forma breve e objetiva, não use traços ou pontos de lista, faça em parágrafo.` //mensagem enviada para a IA
+            Por favor, responda de forma breve e objetiva, não use traços ou pontos de lista, faça em forma de dois paragrafos, um falando da cidade e outro da roupa, lembre-se de ser breve.` //mensagem enviada para a IA
         })
     });
 
