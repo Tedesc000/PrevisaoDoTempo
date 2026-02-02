@@ -84,7 +84,7 @@ async function sugestaoRoupa(){
         },
         body: JSON.stringify({ //corpo da requisição, converter para string JSON
             mensagem: `Com base na temperatura de ${temperatura} e umidade de ${umidade} em ${cidade}, que roupa você recomendaria para vestir hoje? 
-            Por favor, responda de forma breve e objetiva, não use traços ou pontos de lista, faça em forma de dois paragrafos, um falando da cidade e outro da roupa, lembre-se de ser breve.` //mensagem enviada para a IA
+            Por favor, responda de forma breve e objetiva, não use traços ou pontos de lista, faça em forma de dois paragrafos, um falando da cidade e outro da roupa, lembre-se de ser breve e utilizar no máximo 70 palavras.` //mensagem enviada para a IA
         })
     });
 
