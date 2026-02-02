@@ -6,7 +6,7 @@ Site feito para estudo de web com IA e uso de API's através do canal DevClub
 2. Crie o arquivo **config.php**
   - Acesse os sites **https://openweathermap.org/api** e **https://groq.com/**
   - Faça login e crie uma chave de API nos dois
-3. Acesse o arquivo config.php e escreva o seguinte código:
+3. Acesse o arquivo config.php e escreva o seguinte código completando com as suas chaves de API:
 ```
 <?php 
     define('chave', 'suaChaveApiOpenWeather');
